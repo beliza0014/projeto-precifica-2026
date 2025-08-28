@@ -1,0 +1,249 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Financial Dashboard Design System - Dark Theme Optimized */
+
+@layer base {
+  :root {
+    /* Dark theme as default for financial dashboard */
+    --background: 217 33% 9%;
+    --foreground: 213 31% 91%;
+
+    --card: 217 33% 11%;
+    --card-foreground: 213 31% 91%;
+
+    --popover: 217 33% 11%;
+    --popover-foreground: 213 31% 91%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 217 33% 9%;
+
+    --secondary: 217 33% 15%;
+    --secondary-foreground: 213 31% 91%;
+
+    --muted: 217 33% 15%;
+    --muted-foreground: 217 16% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 213 31% 91%;
+
+    --destructive: 0 73% 58%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 98%;
+
+    --warning: 45 93% 58%;
+    --warning-foreground: 217 33% 9%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 15%;
+    --ring: 217 91% 60%;
+
+    --radius: 0.75rem;
+
+    /* Financial specific colors */
+    --profit: 142 71% 45%;
+    --loss: 0 73% 58%;
+    --neutral: 217 16% 65%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(217 91% 70%));
+    --gradient-success: linear-gradient(135deg, hsl(142 71% 45%), hsl(142 71% 55%));
+    --gradient-card: linear-gradient(135deg, hsl(217 33% 11%), hsl(217 33% 13%));
+
+    /* Shadows */
+    --shadow-card: 0 4px 12px -2px hsl(217 33% 6% / 0.3);
+    --shadow-elevated: 0 8px 24px -4px hsl(217 33% 6% / 0.4);
+
+    /* Sidebar - Enhanced with always visible colors */
+    --sidebar-background: 217 33% 8%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 142 71% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 16% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 217 33% 16%;
+    --sidebar-ring: 142 71% 45%;
+    
+    /* Modern blue accents for sidebar interactions */
+    --sidebar-hover-border: 217 91% 60%;
+    --sidebar-hover-bg: 59 130 246;
+    --sidebar-active-border: 217 91% 60%;
+    --sidebar-active-bg: 37 99 235;
+
+    /* Transitions - Optimized for perceived performance */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.1s ease-out;
+    --transition-instant: all 0.05s ease-out;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 142 71% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 16% 30%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 13% 88%;
+    --sidebar-ring: 142 71% 45%;
+    
+    /* Light mode blue accents */
+    --sidebar-hover-border: 217 91% 60%;
+    --sidebar-hover-bg: 59 130 246;
+    --sidebar-active-border: 217 91% 60%;
+    --sidebar-active-bg: 37 99 235;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: -0.01em;
+  }
+  
+  /* Enhanced typography for better readability */
+  .sidebar-typography {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: -0.005em;
+  }
+}
+
+@layer components {
+  /* Hide number input spinners/arrows */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Financial card variants */
+  .financial-card {
+    @apply bg-card border border-border rounded-xl shadow-[var(--shadow-card)] transition-[var(--transition-smooth)];
+  }
+
+  .financial-card-elevated {
+    @apply financial-card shadow-[var(--shadow-elevated)] hover:scale-[1.02];
+  }
+
+  /* Metric display components */
+  .metric-positive {
+    @apply text-[hsl(var(--success))] font-semibold;
+  }
+
+  .metric-negative {
+    @apply text-[hsl(var(--destructive))] font-semibold;
+  }
+
+  .metric-neutral {
+    @apply text-[hsl(var(--neutral))] font-medium;
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    @apply bg-muted animate-pulse rounded-md;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Custom Scrollbar Styles */
+  /* Webkit browsers (Chrome, Safari, Edge) */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border hover:bg-accent rounded-full;
+    transition: background-color 0.2s ease;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-foreground/20;
+  }
+
+  ::-webkit-scrollbar-corner {
+    @apply bg-transparent;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) hsl(var(--muted) / 0.3);
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Enhanced scrollbar for specific containers */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--accent)) hsl(var(--muted) / 0.3);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-accent hover:bg-primary/60 rounded-full;
+  }
+
+  /* Enhanced sidebar accent colors for blue hover/active effect */
+  :root {
+    --sidebar-accent: 217 91% 60%; /* Primary blue */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text */
+  }
+  
+  .light {
+    --sidebar-accent: 217 91% 60%; /* Primary blue */
+    --sidebar-accent-foreground: 0 0% 100%; /* White text */
+  }
+}
